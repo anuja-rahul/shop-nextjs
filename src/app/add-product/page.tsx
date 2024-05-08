@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import prisma from "../lib/db/prisma";
+import FormSubmitButton from "@/components/FormSubmitButton";
 
 export const metadata = {
   title: "Add Product - Nextore",
@@ -56,9 +57,7 @@ export default function AddProductPage() {
           placeholder="Price"
           className="input input-bordered mb-3 w-full"
         />
-        <button type="submit" className="btn btn-primary btn-block">
-          Add Product
-        </button>
+        <FormSubmitButton className="btn-block">Add Product</FormSubmitButton>
       </form>
     </div>
   );
