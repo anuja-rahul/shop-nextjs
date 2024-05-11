@@ -25,7 +25,7 @@
 &nbsp;  
 [![Project-Version](https://img.shields.io/badge/Version-v0.1-green.svg)](https://github.com/anuja-rahul/shop-nextjs)
 
-#### An e-commerce site made using NextJS with with a functioning databse and user authentication.
+#### An e-commerce site made using NextJS with with a functioning database and user authentication.
 
 ### Visit Us: [here](/)
 
