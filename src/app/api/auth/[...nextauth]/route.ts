@@ -4,8 +4,9 @@ import { env } from "@/app/lib/env";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { NextAuthOptions } from "next-auth";
 import { Adapter } from "next-auth/adapters";
-import NextAuth from "next-auth/next";
+import NextAuth from 'next-auth'
 import Google from "next-auth/providers/google";
+// import authOptions from '../../../../lib/configs/auth/authOptions'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
