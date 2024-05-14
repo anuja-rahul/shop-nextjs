@@ -93,7 +93,40 @@ export async function mergeAnonymousCartIntoUserCart(userId: string) {
     include: { items: true },
   });
 
-  await prisma.$transaction(async (tx) => {});
+  await prisma.$transaction(async (tx) => {
+    if (userCart) {
+      const mergedCartItems = mergeCartItems(localCart.items, userCart.items);
+      await tx.cartItem.deleteMany({
+        where: { cartId: userCart.id },
+      });
+
+      await tx.cartItem.createMany({
+        data: mergedCartItems.map((item) => ({
+          cartId: userCart.id,
+          productId: item.productId,
+          quantity: item.quantity,
+        })),
+      });
+    } else {
+      tx.cart.create({
+        data: {
+          userId,
+          items: {
+            createMany: {
+              data: localCart.items.map((item) => ({
+                productId: item.productId,
+                quantity: item.quantity,
+              })),
+            },
+          },
+        },
+      });
+    }
+    await tx.cart.delete({
+      where: { id: localCart.id },
+    });
+    cookies().set("localCartId", "");
+  });
 }
 
 function mergeCartItems(...cartItems: CartItem[][]) {
