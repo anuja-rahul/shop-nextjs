@@ -4,7 +4,7 @@ import { setProductQUantity } from "./actions";
 import CartEntry from "./CartEntry";
 
 export const metadata = {
-  title: "Your CArt - Nextore",
+  title: "Your Cart - Nextore",
 };
 
 export default async function CartPage() {
