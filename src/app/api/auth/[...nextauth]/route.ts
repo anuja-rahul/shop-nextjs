@@ -2,9 +2,8 @@ import { mergeAnonymousCartIntoUserCart } from "@/app/lib/db/cart";
 import prisma from "@/app/lib/db/prisma";
 import { env } from "@/app/lib/env";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import { Adapter } from "next-auth/adapters";
-import NextAuth from "next-auth/next";
 import Google from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
